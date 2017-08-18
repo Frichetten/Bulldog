@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
 def homepage(request):
-    context = {'data': 'info'}
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
+
+def notice(request):
+    return render(request, 'notice.html')
+
+def dev(request):
+    return render(request, 'dev.html')

@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url, patterns
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from . import views
 
 urlpatterns = [
     url(r'^$', views.homepage, name='homepage'),
+    url(r'^notice/$', views.notice, name='notice'),
+    url(r'^robots.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name="robots_file"),
+    url(r'^dev/$', views.dev, name='dev'),
     url(r'^admin/', include(admin.site.urls)),
 ]
