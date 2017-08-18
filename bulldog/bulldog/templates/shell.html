@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Web-Shell</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color:black"> 
+ 
+<div class="container">
+  <h1><center><a href="/" style="color:white" >Web-Shell</a></center></h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+        <p><font size="4em">Welcome to Web-Shell! The world's most secure webshell. Web-Shell will prevent users from running dangerous 
+	shell commands. It does this by limiting the specific commands that can be run. A list of valid commands can be seen below.</font></p>
+
+	<p><font size="4em"><pre>
+ifconfig
+ls
+echo
+pwd
+cat</pre></font></p>
+
+	<p><font size="4em">All commands are run on the server itself, so it is very important to update Web-Shell as soon as possible if a 
+	vulnerability is discovered.</font></p>
+	
+        <form method='POST' action=''>{% csrf_token %}
+	    <input id="command" maxlength="100" name="command" type="text" required style="width:90%" />
+	    <input type="submit" value="Run" style="width:9%">
+	</form><br>
+	
+	<textarea style="width:100%;height:100%" readonly="readonly" name="display" id="displayID">{{ data }}</textarea>
+
+
+    </div>
+  </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+function setHeight(fieldId){
+    document.getElementById(fieldId).style.height = document.getElementById(fieldId).scrollHeight+'px';
+}
+setHeight('displayID');
+</script>
+
+</html>
+

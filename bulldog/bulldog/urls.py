@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^notice/$', views.notice, name='notice'),
     url(r'^robots.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name="robots_file"),
     url(r'^dev/$', views.dev, name='dev'),
+    url(r'^dev/shell/$', views.shell, name='shell'),
     url(r'^admin/', include(admin.site.urls)),
 ]
