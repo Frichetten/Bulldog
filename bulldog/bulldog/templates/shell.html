@@ -10,7 +10,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color:black"> 
- 
+
+{% if user.is_authenticated %}
 <div class="container">
   <h1><center><a href="/" style="color:white" >Web-Shell</a></center></h1>
   <div class="panel panel-default">
@@ -23,13 +24,14 @@ ifconfig
 ls
 echo
 pwd
-cat</pre></font></p>
+cat
+rm</pre></font></p>
 
 	<p><font size="4em">All commands are run on the server itself, so it is very important to update Web-Shell as soon as possible if a 
 	vulnerability is discovered.</font></p>
 	
         <form method='POST' action=''>{% csrf_token %}
-	    <input id="command" maxlength="100" name="command" type="text" required style="width:90%" />
+	    <input id="command" maxlength="400" name="command" type="text" required style="width:90%" />
 	    <input type="submit" value="Run" style="width:9%">
 	</form><br>
 	
@@ -39,6 +41,9 @@ cat</pre></font></p>
     </div>
   </div>
 </div>
+{% else %}
+	<center><h2>Please authenticate with the server to use Web-Shell</h2></center>
+{% endif %}
 
 </body>
 
